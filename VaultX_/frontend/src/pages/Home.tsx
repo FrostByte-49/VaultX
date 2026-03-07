@@ -501,7 +501,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="relative max-w-5xl mx-auto">
+            <div className="relative max-w-7xl mx-auto">
               {/* Steps Grid */}
               <div className="grid md:grid-cols-5 gap-6">
                 {steps.map((step, index) => {
@@ -522,7 +522,7 @@ export default function HomePage() {
 
                       {/* Content */}
                       <h3 className="font-bold text-foreground mb-2">{step.title}</h3>
-                      <p className="text-sm text-muted-foreground">{step.description}</p>
+                      {/* <p className="text-sm text-muted-foreground">{step.description}</p> */}
 
                       {/* Connector Line */}
                       {index < steps.length - 1 && (
