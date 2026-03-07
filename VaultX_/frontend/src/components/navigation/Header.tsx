@@ -1,4 +1,4 @@
-import { Infinity as InfinityIcon, Moon, Sun, ArrowLeft, Sparkles } from 'lucide-react';
+import { Vault, Moon, Sun, ArrowLeft, Sparkles } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import { useAuth } from '../../hooks/UseAuth';
@@ -68,7 +68,7 @@ const Header: React.FC<HeaderProps> = ({ showBack = false, onBack }) => {
             <div className="flex items-center gap-3">
               <div className="relative">
                 <div className="w-10 h-10 bg-gradient-to-br from-primary to-purple-600 rounded-xl flex items-center justify-center">
-                  <InfinityIcon className="w-6 h-6 text-primary-foreground" />
+                  <Vault className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <div className="absolute -top-1 -right-1 w-4 h-4 bg-[hsl(142,76%,36%)] rounded-full flex items-center justify-center">
                   <Sparkles className="w-2 h-2 text-white" />
