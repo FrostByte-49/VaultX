@@ -26,7 +26,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ currentPage, onNavigate }) => {
 
   const navItems = [
     { id: 'home', icon: Home, label: 'Home' },
-    { id: 'evaluate', icon: Package, label: 'Evaluate' },
+    { id: 'dashboard', icon: Package, label: 'Evaluate' },
     { id: 'compare', icon: BarChart3, label: 'Compare' },
     { id: 'demo', icon: Layers, label: 'Scenarios' },
     { id: 'trends', icon: TrendingUp, label: 'Trends' },
