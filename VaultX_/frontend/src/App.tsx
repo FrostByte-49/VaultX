@@ -1,4 +1,3 @@
-// src/App.tsx
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { supabase } from './services/supabase';
@@ -14,23 +13,29 @@ import AuditPage from './pages/Audit';
 import NomineeAccessPage from './pages/NomineeAccess';
 import LoginPage from './pages/Login';
 import SignupPage from './pages/Signup';
+import { Shield } from 'lucide-react';
 
-// Protected Route Component
+// Protected Route Component 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     const checkAuth = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       
       if (!session) {
-        // Redirect to login with the intended destination
-        navigate('/login', { state: { from: location.pathname } });
-        setIsAuthenticated(false);
+        if (isMounted) {
+          setIsAuthenticated(false);
+          navigate('/login', { state: { from: location.pathname }, replace: true });
+        }
       } else {
-        setIsAuthenticated(true);
+        if (isMounted) {
+          setIsAuthenticated(true);
+        }
       }
     };
 
@@ -39,14 +44,21 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (!session) {
-        navigate('/login', { state: { from: location.pathname } });
-        setIsAuthenticated(false);
+        if (isMounted) {
+          setIsAuthenticated(false);
+          navigate('/login', { state: { from: location.pathname }, replace: true });
+        }
       } else {
-        setIsAuthenticated(true);
+        if (isMounted) {
+          setIsAuthenticated(true);
+        }
       }
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      isMounted = false;
+      subscription.unsubscribe();
+    };
   }, [navigate, location]);
 
   // Show loading state while checking auth
@@ -56,7 +68,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
         <div className="relative">
           <div className="w-16 h-16 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-8 h-8 bg-primary/20 rounded-full animate-pulse" />
+            <Shield className="w-8 h-8 text-primary animate-pulse" />
           </div>
         </div>
       </div>
@@ -91,13 +103,15 @@ function AppContent() {
     navigate(path);
   };
 
+  // Check if current route is auth page
+  const isAuthPage = currentPage === 'login' || currentPage === 'signup';
   // Check if current route is public
-  const isPublicRoute = currentPage === 'home' || currentPage === 'login' || currentPage === 'signup';
+  const isPublicRoute = currentPage === 'home' || isAuthPage;
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-      {/* Hide Header On Login Page */}
-      {currentPage !== 'login' && currentPage !== 'signup' && <Header />}
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Hide Header On Auth Pages */}
+      {!isAuthPage && <Header />}
       
       <main className={!isPublicRoute ? 'pb-16' : ''}>
         <Routes>
@@ -163,16 +177,34 @@ function AppContent() {
               </ProtectedRoute>
             } 
           />
+          
+          {/* Catch-all route for 404 */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
 
-      {/* Hide Nav On Auth Pages */}
-      {currentPage !== 'login' && currentPage !== 'signup' && (
+      {/* Hide BottomNav On Auth Pages */}
+      {!isAuthPage && (
         <BottomNav currentPage={currentPage} onNavigate={handleNavigate} />
       )}
     </div>
   );
 }
+
+// Simple 404 page component
+const NotFoundPage = () => (
+  <div className="min-h-[80vh] flex flex-col items-center justify-center p-4">
+    <Shield className="w-20 h-20 text-primary mb-6" />
+    <h1 className="text-4xl font-bold text-foreground mb-2">404</h1>
+    <p className="text-muted-foreground mb-6">Page not found</p>
+    <button
+      onClick={() => window.history.back()}
+      className="px-6 py-3 bg-primary text-primary-foreground rounded-xl hover:opacity-90 transition-all"
+    >
+      Go Back
+    </button>
+  </div>
+);
 
 function App() {
   return (
