@@ -6,15 +6,16 @@ import {
   useTransform, 
   MotionValue 
 } from 'framer-motion';
-import { 
-  Home, 
-  Package, 
-  BarChart3, 
-  Layers, 
-  TrendingUp, 
-  Lightbulb, 
-  User 
-} from 'lucide-react';
+import {
+  Home,
+  Vault,
+  BarChart3,
+  Users,
+  KeyRound,
+  Skull,
+  FileSearch,
+  Settings
+} from "lucide-react";
 
 interface BottomNavProps {
   currentPage: string;
@@ -26,12 +27,13 @@ const BottomNav: React.FC<BottomNavProps> = ({ currentPage, onNavigate }) => {
 
   const navItems = [
     { id: 'home', icon: Home, label: 'Home' },
-    { id: 'dashboard', icon: Package, label: 'Evaluate' },
-    { id: 'compare', icon: BarChart3, label: 'Compare' },
-    { id: 'demo', icon: Layers, label: 'Scenarios' },
-    { id: 'trends', icon: TrendingUp, label: 'Trends' },
-    { id: 'insights', icon: Lightbulb, label: 'Insights' },
-    { id: 'about', icon: User, label: 'About' },
+    { id: 'vault', icon: Vault, label: 'Vault' },
+    { id: 'dashboard', icon: BarChart3, label: 'Dashboard' },
+    { id: 'nominees', icon: Users, label: 'Nominees' },
+    { id: 'nominee-access', icon: KeyRound, label: 'Nominee Access' },
+    { id: 'dead-man-switch', icon: Skull, label: 'Dead Man Switch' },
+    { id: 'audit', icon: FileSearch, label: 'Audit' },
+    { id: 'settings', icon: Settings, label: 'Settings' },
   ];
 
   return (
