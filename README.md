@@ -42,19 +42,19 @@ Powered by zero-knowledge architecture, interactive dashboards, and beautiful mo
 
 | **Home Page** | **Vault Page** |
 |---------------|---------------------|
-| ![Home Page](frontend/public/assets/preview/Image_1.webp) | ![Vault Dashboard](frontend/public/assets/preview/Image_2.webp) |
+| ![Home Page](VaultX_\frontend\public\preview\Image_1.webp) | ![Vault Dashboard](VaultX_\frontend\public\preview\Image_2.webp) |
 
 | **Dashboard Page** | **Nominees Management Page** |
 |------------------------|---------------------|
-| ![Nominees](frontend/public/assets/preview/Image_3.webp) | ![Dead Man Switch](frontend/public/assets/preview/Image_4.webp) |
+| ![Dashboard](VaultX_\frontend\public\preview\Image_3.webp) | ![Nominees](VaultX_\frontend\public\preview\Image_4.webp) |
 
 | **Nominee Access Page** | **Dead Man Switch Page** |
 |---------------|---------------------|
-| ![Audit](frontend/public/assets/preview/Image_5.webp) | ![Nominee Access](frontend/public/assets/preview/Image_6.webp) |
+| ![Nominee Access](VaultX_\frontend\public\preview\Image_5.webp) | ![Dead Man Switch](VaultX_\frontend\public\preview\Image_6.webp) |
 
 | **Audit Logs Page** | **Settings Page** |
 |---------------|---------------------|
-| ![Audit](frontend/public/assets/preview/Image_7.webp) | ![Nominee Access](frontend/public/assets/preview/Image_8.webp) |
+| ![Audit](VaultX_\frontend\public\preview\Image_7.webp) | ![Settings](VaultX_\frontend\public\preview\Image_8.webp) |
 
 <br>
 
