@@ -1,13 +1,135 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
+
+    <!-- SEO-Optimized Meta Tags For VaultX -->
+    <meta 
+      name="description" 
+      content="VaultX is a secure digital inheritance protocol that ensures your digital assets—passwords, crypto, documents—are safely transferred to your loved ones when you're no longer there." 
+    />
+    <meta 
+      name="keywords" 
+      content="VaultX, digital inheritance, digital legacy, crypto inheritance, password manager, dead man switch, digital vault, asset protection, estate planning, digital will, secure password storage, crypto wallet backup" 
+    />
+    <meta name="author" content="Team ZERO" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph (For Social Sharing) -->
+    <meta property="og:title" content="VaultX — Your Digital Life Doesn't Die With You" />
+    <meta 
+      property="og:description" 
+      content="Secure, automated transfer of your digital assets to trusted nominees. Passwords, crypto, documents — protected by military-grade encryption." 
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vaultx.com" />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:site_name" content="VaultX" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="VaultX — Digital Inheritance Protocol" />
+    <meta 
+      name="twitter:description" 
+      content="Secure your digital legacy. Passwords, crypto, and documents safely transferred to your loved ones." 
+    />
+    <meta name="twitter:image" content="/og-image.png" />
+    <meta name="twitter:creator" content="@vaultx" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+
+    <!-- Favicon Package -->
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="VaultX" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+
+    <!-- Inter Font - Clean, Modern Sans-Serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" 
+      rel="stylesheet"
+    />
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="/src/index.css" as="style" />
+    <link rel="preload" href="/src/main.tsx" as="script" />
+
+    <title>VaultX — Digital Inheritance Protocol</title>
   </head>
-  <body>
+
+  <body class="bg-white text-black dark:bg-black dark:text-white">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Theme Initialization - Prevents Flash of Wrong Theme -->
+    <script>
+      (function () {
+        try {
+          // Check localStorage first, then system preference
+          const saved = localStorage.getItem('vaultx-dark-mode');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+          // Remove any existing theme class
+          document.documentElement.classList.remove('dark');
+
+          // Apply dark mode if saved as true OR (no saved preference and system prefers dark)
+          if (saved === 'true' || (saved === null && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+
+          // Log for debugging (remove in production)
+          console.log('Theme initialized:', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        } catch (e) {
+          console.error('Theme initialization error:', e);
+        }
+      })();
+    </script>
+
+    <!-- Structured Data for Rich Results (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "VaultX",
+        "applicationCategory": "SecurityApplication",
+        "applicationSubCategory": "Digital Inheritance",
+        "operatingSystem": "Web, iOS, Android",
+        "description": "Secure digital inheritance protocol for transferring passwords, crypto, and documents to loved ones.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Military-grade encryption",
+          "Dead-man switch protocol",
+          "Role-based nominee access",
+          "Cryptocurrency support",
+          "Digital asset vault",
+          "Audit trail"
+        ],
+        "screenshot": "https://vaultx.com/screenshot.png",
+        "softwareVersion": "1.0.0",
+        "url": "https://vaultx.com",
+        "sameAs": [
+          "https://twitter.com/vaultx",
+          "https://github.com/vaultx",
+          "https://linkedin.com/company/vaultx"
+        ]
+      }
+    </script>
+
+    <!-- Additional Meta Tags for Security -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   </body>
 </html>
