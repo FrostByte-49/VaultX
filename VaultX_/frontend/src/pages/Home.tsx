@@ -1,6 +1,7 @@
 // Home.tsx
 import {
   Shield,
+  Vault,
   Lock,
   Users,
   Clock,
@@ -877,14 +878,14 @@ export default function HomePage() {
               <div className="col-span-2">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg">
-                    <Shield className="w-5 h-5 text-primary-foreground" />
+                    <Vault className="w-5 h-5 text-primary-foreground" />
                   </div>
                   <span className="text-2xl font-bold text-foreground">
                     Vault<span className="text-primary">X</span>
                   </span>
                 </div>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Secure your digital legacy. Protect what matters most for future generations.
+                  Secure Your Digital Legacy. <br />Protect What Matters Most For Future Generations.
                 </p>
                 <div className="flex gap-4">
                   <a

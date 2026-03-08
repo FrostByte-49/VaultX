@@ -205,7 +205,7 @@ export default function DashboardPage() {
                   <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-primary to-purple-600 rounded-2xl flex items-center justify-center shadow-xl">
                     <Shield className="w-8 h-8 md:w-10 md:h-10 text-white" />
                   </div>
-                  <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                  <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center ">
                     <Sparkles className="w-3 h-3 text-white" />
                   </div>
                 </div>
