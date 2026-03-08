@@ -223,7 +223,6 @@ export default function AuditPage() {
               <Activity className="w-6 h-6 text-primary animate-pulse" />
             </div>
           </div>
-          <p className="text-muted-foreground text-sm animate-pulse">Loading audit logs…</p>
         </div>
       </div>
     );
