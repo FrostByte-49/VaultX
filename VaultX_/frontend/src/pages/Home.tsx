@@ -20,7 +20,6 @@ import {
   FileText,
   Image as ImageIcon,
   Music,
-  Eye,
   Fingerprint,
   Wallet,
   Coins,
@@ -371,11 +370,11 @@ export default function HomePage() {
               </button>
 
               <button
-                onClick={() => navigate('/demo')}
+                onClick={() => navigate('/nominees')}
                 className="px-8 py-4 border-2 border-border bg-card/80 backdrop-blur-sm text-foreground font-semibold rounded-xl hover:bg-accent transition-all hover:scale-105 flex items-center justify-center gap-2 text-lg"
               >
-                <Eye className="w-5 h-5" />
-                Watch Demo
+                <Users className="w-5 h-5" />
+                Assign Nominee
               </button>
             </div>
 
