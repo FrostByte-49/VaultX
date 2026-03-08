@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   Shield, Power, Clock, Mail, CheckCircle, AlertCircle, XCircle,
   AlertTriangle, Calendar, History, Settings, Info, Activity,
-  CalendarDays, MailCheck, Smartphone, Pause, X, Play, Zap,
+  CalendarDays, MailCheck, Smartphone, Pause, X, Play, Zap, Sparkles,
   RefreshCw, Timer, HeartPulse, Send, FlaskConical
 } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
@@ -274,7 +274,6 @@ export default function DeadManSwitchPage() {
               <HeartPulse className="w-6 h-6 text-primary animate-pulse" />
             </div>
           </div>
-          <p className="text-muted-foreground text-sm animate-pulse">Loading switch configuration…</p>
         </div>
       </div>
     );
@@ -305,7 +304,9 @@ export default function DeadManSwitchPage() {
                     <HeartPulse className="w-7 h-7 md:w-8 md:h-8 text-white" />
                   </div>
                   {switchConfig?.status === 'active' && (
-                    <div className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full" />
+                    <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                      <Sparkles className="w-3 h-3 text-white" />
+                    </div>
                   )}
                 </div>
                 <div>
@@ -406,7 +407,7 @@ export default function DeadManSwitchPage() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs text-muted-foreground">Inactivity Progress</span>
                   <span className="text-xs font-medium text-foreground">
-                    {switchConfig.inactivity_period - daysUntilNext} / {switchConfig.inactivity_period} days used
+                    {switchConfig.inactivity_period - daysUntilNext} / {switchConfig.inactivity_period} Days Used
                   </span>
                 </div>
                 <div className="h-2.5 bg-muted rounded-full overflow-hidden">
@@ -415,7 +416,7 @@ export default function DeadManSwitchPage() {
                     style={{ width: `${progressPercent}%` }}
                   />
                 </div>
-                <p className="text-xs text-muted-foreground mt-2">
+                <p className="text-xs text-muted-foreground mt-2 capitalize">
                   {daysUntilNext > 0 ? `${daysUntilNext} days remaining before trigger` : 'Check-in overdue'}
                 </p>
               </div>
@@ -435,12 +436,12 @@ export default function DeadManSwitchPage() {
               </div>
               <div className="p-3 bg-muted/30 rounded-xl">
                 <History className="w-4 h-4 text-muted-foreground mb-2" />
-                <p className="text-sm font-semibold text-foreground leading-tight mt-1">
+                <p className="text-xl font-semibold text-foreground leading-tight mt-1 capitalize">
                   {switchConfig?.last_check_in
                     ? formatDistanceToNow(new Date(switchConfig.last_check_in), { addSuffix: true })
                     : 'Never'}
                 </p>
-                <p className="text-xs text-muted-foreground">Last Check-in</p>
+                <p className="text-xs text-muted-foreground mt-2">Last Check-In</p>
               </div>
               <div className="p-3 bg-muted/30 rounded-xl">
                 <Calendar className="w-4 h-4 text-muted-foreground mb-2" />
@@ -459,7 +460,7 @@ export default function DeadManSwitchPage() {
                 className="w-full py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-xl font-semibold hover:opacity-90 hover:scale-[1.01] transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-sm"
               >
                 {checkingIn
-                  ? <><RefreshCw className="w-4 h-4 animate-spin" />Checking in…</>
+                  ? <><RefreshCw className="w-4 h-4 animate-spin" />Checking In…</>
                   : <><Zap className="w-4 h-4" />Check In Now</>
                 }
               </button>
@@ -553,8 +554,8 @@ export default function DeadManSwitchPage() {
           {logs.length === 0 ? (
             <div className="text-center py-12">
               <Clock className="w-12 h-12 text-muted-foreground/20 mx-auto mb-3" />
-              <p className="text-muted-foreground text-sm">No activity recorded yet</p>
-              <p className="text-muted-foreground/60 text-xs mt-1">Actions like check-ins will appear here</p>
+              <p className="text-muted-foreground text-sm capitalize">No activity recorded yet</p>
+              <p className="text-muted-foreground/60 text-xs mt-1 capitalize">Actions like check-ins will appear here</p>
             </div>
           ) : (
             <div className="space-y-1">
@@ -572,7 +573,7 @@ export default function DeadManSwitchPage() {
                       <LogIcon className={`w-4 h-4 ${meta.color}`} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-foreground">{meta.label}</p>
+                      <p className="text-sm font-medium text-foreground capitalize">{meta.label}</p>
                       {detail && (
                         <p className="text-xs text-muted-foreground truncate">{detail}</p>
                       )}
